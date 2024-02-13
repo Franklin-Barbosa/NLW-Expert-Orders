@@ -1,2 +1,2 @@
-# NLW-Expert-React-Native
- Repositório do projeto da aplicação que foi desenvolvida durante o NLW Experts da Rocketseat com React Native.
+# NLW Expert Orders
+Repositório da aplicação que foi desenvolvida durante o NLW Experts 2024 da Rocketseat utilizando React Native.
