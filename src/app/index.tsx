@@ -5,11 +5,15 @@ import { CATEGORIES, MENU } from "@/utils/data/products"
 import { useState, useRef } from "react"
 import { Product } from "@/components/product"
 import { Link } from "expo-router"
+import { useCardStore } from "@/stores/cart-store"
 
 export default function Home() {
+    const cartStore = useCardStore()
     const [category, setCategory] = useState(CATEGORIES[0])
 
     const selectListRef = useRef<SectionList>(null)
+
+    const cartQuantityItems = cartStore.products.reduce((total, Product) => total + Product.quantity, 0)
 
     function handleCategorySelect(selectedCategory: string) {
         setCategory(selectedCategory)
@@ -27,7 +31,8 @@ export default function Home() {
 
     return(
         <View className="flex-1 pt-11">
-            <Header title="Faça seu pedido" cartQuantityItems={3} />
+            {/* Sacola de compras/pedidos */}
+            <Header title="Faça seu pedido" cartQuantityItems={cartQuantityItems} />
             
             {/* Botões */}
             <FlatList 
@@ -50,7 +55,7 @@ export default function Home() {
                 ref={selectListRef}
                 sections={MENU}
                 keyExtractor={(item) => item.id}
-                stickySectionHeadersEnabled={false} // evitar esticamento ou sess~es sobrepostas
+                stickySectionHeadersEnabled={false} // evitar esticamento ou sessões sobrepostas
                 renderItem={({ item }) => ( 
                     <Link href={`/product/${item.id}`} asChild >
                         <Product data={item} />
