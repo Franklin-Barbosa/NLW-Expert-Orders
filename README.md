@@ -10,15 +10,15 @@ Aplicação mobile, um delivery para lanchonetes, desenvolvida durante o NLW Exp
 ## Executando o projeto
 
 Clone este repositório
-```
-git clone https://github.com/Franklin-Barbosa/NLW-Expert-Orders.git
+```shell
+git clone https://github.com/Franklin-Barbosa/NLW-Expert-Reac-Native-Orders.git
 ```
 Instale as dependências
-```
+```shell
 npm install
 ```
 Execute a aplicação
-```
+```shell
 npx expo start
 ```
 
