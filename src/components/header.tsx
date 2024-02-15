@@ -1,6 +1,7 @@
-import { Image, View, Text, TouchableOpacity } from "react-native";
+import { Image, View, Text, TouchableOpacity } from "react-native"
 import { Feather } from "@expo/vector-icons" // icones
-import colors from "tailwindcss/colors"; // cores
+import { Link } from "expo-router"
+import colors from "tailwindcss/colors" // cores
 
 // Tipagem
 type HeaderProps = {
@@ -18,17 +19,19 @@ export function Header({ title, cartQuantityItems = 0 }: HeaderProps) {
 
             {
                 cartQuantityItems > 0 && (
-                    // Tornar o campo(icone) de sacola clicável
-                    <TouchableOpacity className="relative" activeOpacity={0.7}>
-                        <View className="bg-lime-300 w-4 h-4 rounded-full items-center justify-center top-2 z-10 -right-3.5">
-                            <Text className="text-slate-900 font-bold text-xs">
-                                { cartQuantityItems }
-                            </Text>
-                        </View>
+                    <Link href="/cart" asChild>
+                        {/* Tornar o campo(icone) de sacola clicável */}
+                        <TouchableOpacity className="relative" activeOpacity={0.7}>
+                            <View className="bg-lime-300 w-4 h-4 rounded-full items-center justify-center top-2 z-10 -right-3.5">
+                                <Text className="text-slate-900 font-bold text-xs">
+                                    { cartQuantityItems }
+                                </Text>
+                            </View>
 
-                        {/* Icone de sacola de compras */}
-                        <Feather name="shopping-bag" color={colors.white} size={24} /> 
-                    </TouchableOpacity>
+                            {/* Icone de sacola de compras */}
+                            <Feather name="shopping-bag" color={colors.white} size={24} /> 
+                        </TouchableOpacity>
+                    </Link>
                 )
             }
         </View>
